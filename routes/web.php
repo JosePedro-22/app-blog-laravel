@@ -7,8 +7,10 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::controller(LoginController::class)->group(function() {
-    Route::get('login','index')->name('login');
-    Route::post('login','store');
-    Route::post('login','destroy')->name('logout');
-});
+Route::get('login', [LoginController::class, 'index'])->name('login');
+Route::post('login', [LoginController::class, 'store'])->name('create');
+Route::post('login', [LoginController::class, 'destroy'])->name('logout');
+
+Route::get('dashboard', function (){
+    return view('dashboard');
+})->middleware('auth')->name('dashboard');
