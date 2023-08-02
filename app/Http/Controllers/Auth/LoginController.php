@@ -20,7 +20,6 @@ class LoginController extends Controller
     }
     public function store(Request $request)
     {
-//        dd('oi');
         $data = $request->validate([
             'email' => 'required|email',
             'password' => 'required|string'
