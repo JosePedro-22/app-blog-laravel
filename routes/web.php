@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\FileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('login', function () {
@@ -14,3 +15,5 @@ Route::post('login', [LoginController::class, 'destroy'])->name('logout');
 Route::get('dashboard', function (){
     return view('dashboard');
 })->middleware('auth')->name('dashboard');
+
+Route::get('file/{hash}', FileController::class)->name('file');
